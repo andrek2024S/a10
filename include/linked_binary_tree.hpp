@@ -270,12 +270,12 @@ class LinkedBinaryTree{
                     Position curr = fringe.front();
                     fringe.pop();
                     visited.push(curr);
+                    if (curr.is_external() && curr.node->parent != nullptr && curr.node == curr.node->parent->left)
+                    {
+                        count++;
+                    }
                     for (Position c : curr.children())
                     {
-                        if (c.node->left != nullptr)
-                        {
-                            count++;
-                        }
                         fringe.push(c);
                     }
                 }
